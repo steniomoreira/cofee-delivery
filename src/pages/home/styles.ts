@@ -8,7 +8,7 @@ export const IntroContainer = styled.div`
 `
 export const BannerContainer = styled.div`
   width: 100%;
-  max-width: 75rem;
+  max-width: 72rem;
   padding: 0 1rem;
   margin: 0 auto;
 
@@ -55,7 +55,6 @@ export const Item = styled.div`
 
   min-width: 274px;
 `
-
 const ITEM_COLORS = {
   yellowDark: 'yellowDark',
   yellow: 'yellow',
@@ -79,4 +78,34 @@ export const ItemIcon = styled.div<ItemIconColor>`
   color: ${(props) => props.theme.white};
 
   border-radius: 50%;
+`
+export const CoffeeListContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.375rem;
+
+  padding: 2rem 0;
+
+  header {
+    width: 100%;
+    max-width: 72rem;
+    padding: 0 1rem;
+    margin: 0 auto;
+
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Baloo 2', sans-serif;
+  }
+`
+export const CoffeeList = styled.div`
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+
+  display: flex;
+  gap: 2.5rem 2rem;
+
+  flex-wrap: wrap;
 `
