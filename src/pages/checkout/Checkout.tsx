@@ -15,7 +15,8 @@ import {
 } from './styles'
 import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
 import { Button } from '../../components/button/Button'
-import { ButtonSmall } from '../../components/buttonSmall/ButtonSmall'
+import { CoffeeSelected } from './components/coffeeSelected/CoffeeSelected'
+import { Totalizers } from '../../components/totalizers/Totalizers'
 
 export function Checkout() {
   return (
@@ -59,9 +60,11 @@ export function Checkout() {
               <ButtonSelect text="Cartão de crédito">
                 <CreditCard size={16} />
               </ButtonSelect>
+
               <ButtonSelect text="Cartão de débito">
                 <Bank size={16} />
               </ButtonSelect>
+
               <ButtonSelect text="Dinheiro" select>
                 <Money size={16} />
               </ButtonSelect>
@@ -73,7 +76,11 @@ export function Checkout() {
       <section>
         <h2>Café selecionados</h2>
         <ConfirmRequest>
-          <ButtonSmall text="Remover" />
+          <CoffeeSelected />
+          <CoffeeSelected />
+
+          <Totalizers />
+
           <Button text="Confirmar Pedido" />
         </ConfirmRequest>
       </section>

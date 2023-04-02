@@ -12,7 +12,7 @@ export const CheckoutContainer = styled.div`
   gap: 2rem;
 
   section {
-    h2 {
+    > h2 {
       font-family: 'Baloo 2', sans-serif;
       font-size: 1.125rem;
       margin-bottom: 15px;
@@ -77,4 +77,5 @@ export const DescriptionContainer = styled.div<ColorProps>`
 
 export const ConfirmRequest = styled(CoffeeCardContainer)`
   max-width: 448px;
+  border-radius: 6px 44px 6px 44px;
 `
