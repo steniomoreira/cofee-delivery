@@ -14,6 +14,7 @@ import {
   GroupInputsFields,
 } from './styles'
 import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
+import { Button } from '../../components/button/Button'
 
 export function Checkout() {
   return (
@@ -70,7 +71,9 @@ export function Checkout() {
 
       <section>
         <h2>Café selecionados</h2>
-        <ConfirmRequest>Content</ConfirmRequest>
+        <ConfirmRequest>
+          <Button text="Confirmar Pedido" />
+        </ConfirmRequest>
       </section>
     </CheckoutContainer>
   )
