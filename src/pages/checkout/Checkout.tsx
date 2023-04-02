@@ -15,6 +15,7 @@ import {
 } from './styles'
 import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
 import { Button } from '../../components/button/Button'
+import { ButtonSmall } from '../../components/buttonSmall/ButtonSmall'
 
 export function Checkout() {
   return (
@@ -55,14 +56,14 @@ export function Checkout() {
             </DescriptionContainer>
 
             <GroupInputsFields>
-              <ButtonSelect text="Cartão de crédito" select>
+              <ButtonSelect text="Cartão de crédito">
                 <CreditCard size={16} />
               </ButtonSelect>
               <ButtonSelect text="Cartão de débito">
-                <Money size={16} />
-              </ButtonSelect>
-              <ButtonSelect text="Dinheiro">
                 <Bank size={16} />
+              </ButtonSelect>
+              <ButtonSelect text="Dinheiro" select>
+                <Money size={16} />
               </ButtonSelect>
             </GroupInputsFields>
           </CompleteOrder>
@@ -72,6 +73,7 @@ export function Checkout() {
       <section>
         <h2>Café selecionados</h2>
         <ConfirmRequest>
+          <ButtonSmall text="Remover" />
           <Button text="Confirmar Pedido" />
         </ConfirmRequest>
       </section>
