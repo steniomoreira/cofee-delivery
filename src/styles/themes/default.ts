@@ -16,6 +16,6 @@ export const defaultTheme = {
   baseLabel: '#8D8686',
   baseHover: '#D7D5D5',
   baseButton: '#E6E5E5',
-  baseInput: '#E6E5E5',
+  baseInput: '#EDEDED',
   baseCard: '#F3F2F2',
 }
