@@ -2,14 +2,14 @@ import {
   ActionContainer,
   Buy,
   CoffeeCardContainer,
-  Counter,
   Tag,
   TagsContainer,
 } from './styles'
 
 import expresso from '../../assets/images/type-coffee/expresso.svg'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { Link } from 'react-router-dom'
+import { Counter } from '../counter/Counter'
 
 export function CoffeeCard() {
   return (
@@ -30,16 +30,7 @@ export function CoffeeCard() {
         </h3>
 
         <ActionContainer>
-          <Counter>
-            <button>
-              <Minus size={14} />
-            </button>
-            <span>9</span>
-            <button>
-              <Plus size={14} />
-            </button>
-          </Counter>
-
+          <Counter />
           <Link to="/checkout" title="Checkout">
             <ShoppingCart size={22} weight="fill" />
           </Link>

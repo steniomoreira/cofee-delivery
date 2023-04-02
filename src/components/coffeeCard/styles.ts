@@ -99,33 +99,3 @@ export const ActionContainer = styled.div`
     border-radius: 6px;
   }
 `
-
-export const Counter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 72px;
-
-  font-size: 1rem;
-  color: ${(props) => props.theme.baseText};
-  background: ${(props) => props.theme.baseButton};
-
-  border-radius: 6px;
-  overflow: hidden;
-
-  button {
-    border: 0;
-    width: 26px;
-    height: 38px;
-
-    background: transparent;
-
-    svg {
-      color: ${(props) => props.theme.purple};
-    }
-
-    :focus {
-      box-shadow: none;
-    }
-  }
-`
