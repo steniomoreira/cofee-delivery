@@ -84,18 +84,4 @@ export const ActionContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-
-  a {
-    position: relative;
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: ${(props) => props.theme.purpleDark};
-    color: ${(props) => props.theme.baseCard};
-    border-radius: 6px;
-  }
 `

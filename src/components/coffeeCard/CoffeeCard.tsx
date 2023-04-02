@@ -7,9 +7,8 @@ import {
 } from './styles'
 
 import expresso from '../../assets/images/type-coffee/expresso.svg'
-import { ShoppingCart } from 'phosphor-react'
-import { Link } from 'react-router-dom'
 import { Counter } from '../counter/Counter'
+import { Cart } from '../cart/Cart'
 
 export function CoffeeCard() {
   return (
@@ -31,9 +30,7 @@ export function CoffeeCard() {
 
         <ActionContainer>
           <Counter />
-          <Link to="/checkout" title="Checkout">
-            <ShoppingCart size={22} weight="fill" />
-          </Link>
+          <Cart to="/checkout" title="Checkout" secondary />
         </ActionContainer>
       </Buy>
     </CoffeeCardContainer>
