@@ -1,14 +1,28 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: ${(props) => props.theme.background};
+`
+
+export const HeaderWrapper = styled.div`
   width: 100%;
   max-width: 72rem;
-  margin: 0 auto;
   padding: 2rem 1rem;
-
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  > a {
+    box-shadow: none;
+
+    :focus {
+      box-shadow: none;
+    }
+  }
 `
 
 export const LocationContainer = styled.span`

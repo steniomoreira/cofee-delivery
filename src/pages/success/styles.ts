@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SuccessContainer = styled.div`
   width: 100%;
   max-width: 72rem;
-  padding: 0 1rem;
+  padding: 5rem 1rem 0;
   margin: 0 auto;
 
   > h1 {

@@ -17,7 +17,7 @@ export function Success() {
             </span>
             <p>
               Entregar em <strong>Rua Ana Rocha, 85</strong> <br />
-              Guagiri - Caucaia, CE
+              Guagiru - Caucaia, CE
             </p>
           </DescriptionInfo>
 
