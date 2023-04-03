@@ -17,8 +17,15 @@ import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
 import { Button } from '../../components/button/Button'
 import { CoffeeSelected } from './components/coffeeSelected/CoffeeSelected'
 import { Totalizers } from '../../components/totalizers/Totalizers'
+import { useNavigate } from 'react-router-dom'
 
 export function Checkout() {
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate('/success')
+  }
+
   return (
     <CheckoutContainer>
       <section>
@@ -81,7 +88,7 @@ export function Checkout() {
 
           <Totalizers />
 
-          <Button text="Confirmar Pedido" />
+          <Button text="Confirmar Pedido" onClick={() => handleClick()} />
         </ConfirmRequest>
       </section>
     </CheckoutContainer>

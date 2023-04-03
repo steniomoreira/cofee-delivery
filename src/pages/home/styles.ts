@@ -6,6 +6,7 @@ export const IntroContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
 `
+
 export const BannerContainer = styled.div`
   width: 100%;
   max-width: 72rem;
@@ -39,6 +40,7 @@ export const TitleContainer = styled.div`
     line-height: 130%;
   }
 `
+
 export const ItemsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -55,6 +57,7 @@ export const Item = styled.div`
 
   min-width: 274px;
 `
+
 const ITEM_COLORS = {
   yellowDark: 'yellowDark',
   yellow: 'yellow',
@@ -79,6 +82,7 @@ export const ItemIcon = styled.div<ItemIconColor>`
 
   border-radius: 50%;
 `
+
 export const CoffeeListContainer = styled.div`
   width: 100%;
   display: flex;
@@ -98,6 +102,7 @@ export const CoffeeListContainer = styled.div`
     font-family: 'Baloo 2', sans-serif;
   }
 `
+
 export const CoffeeList = styled.div`
   width: 100%;
   max-width: 72rem;

@@ -36,6 +36,7 @@ export const CompleteOrder = styled(CoffeeCardContainer)`
   flex-direction: column;
   gap: 2rem;
 `
+
 export const GroupInputsFields = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -77,5 +78,5 @@ export const DescriptionContainer = styled.div<ColorProps>`
 
 export const ConfirmRequest = styled(CoffeeCardContainer)`
   max-width: 448px;
-  border-radius: 6px 44px 6px 44px;
+  border-radius: 6px 44px;
 `

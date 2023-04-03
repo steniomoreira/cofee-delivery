@@ -6,7 +6,7 @@ export const CoffeeCardContainer = styled.div`
 
   padding: 0 1.25rem 1.24rem;
   background: ${(props) => props.theme.baseCard};
-  border-radius: 6px 36px 6px;
+  border-radius: 6px 36px;
 
   display: flex;
   align-items: center;
