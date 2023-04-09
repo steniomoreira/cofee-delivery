@@ -1,3 +1,6 @@
+import { Counter } from '../counter/Counter'
+import { Cart } from '../cart/Cart'
+
 import {
   ActionContainer,
   Buy,
@@ -5,27 +8,39 @@ import {
   Tag,
   TagsContainer,
 } from './styles'
+import { priceFormatter } from '../../utils/formatter'
 
-import expresso from '../../assets/images/type-coffee/expresso.svg'
-import { Counter } from '../counter/Counter'
-import { Cart } from '../cart/Cart'
+interface CooffeeProps {
+  imageUrl: string
+  name: string
+  description: string
+  tags: Array<string>
+  price: number
+}
 
-export function CoffeeCard() {
+export function CoffeeCard({
+  imageUrl,
+  name,
+  description,
+  tags,
+  price,
+}: CooffeeProps) {
   return (
     <CoffeeCardContainer>
-      <img src={expresso} alt="Café expresso" />
+      <img src={imageUrl} alt="Café expresso" />
 
       <TagsContainer>
-        <Tag>Tradicional</Tag>
-        <Tag>especial</Tag>
+        {tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
       </TagsContainer>
 
-      <h2>Expresso Tradicional</h2>
-      <p>O Tradicional café feito com água quente e grãos moídos</p>
+      <h2>{name}</h2>
+      <p>{description}</p>
 
       <Buy>
         <h3>
-          <span>R$</span> 9,90
+          <span>R$</span> {priceFormatter.format(price).replace('R$', '')}
         </h3>
 
         <ActionContainer>

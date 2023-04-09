@@ -65,7 +65,8 @@ export const Buy = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.8rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
 
   h3 {
     font-size: 1.5rem;

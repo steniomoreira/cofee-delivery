@@ -6,7 +6,7 @@
       "name": "Expresso Tradicional",
       "description": "O tradicional café feito com água quente e grãos moídos",
       "tags": ["tradicional"],
-      "price": 9.9
+      "price": 29.9
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "name": "Expresso Americano",
       "description": "Expresso diluído, menos intenso que o tradicional",
       "tags": ["tradicional"],
-      "price": 9.9
+      "price": 9.5
     },
     {
       "id": 3,
@@ -30,7 +30,7 @@
       "name": "Expresso Gelado",
       "description": "Bebida preparada com café expresso e cubos de gelo ",
       "tags": ["tradicional", "gelado"],
-      "price": 9.9
+      "price": 9.8
     },
     {
       "id": 5,
@@ -106,7 +106,7 @@
     },
     {
       "id": 14,
-      "imageUrl": "/src/assets/images/type-coffee/iralandes.svg", 
+      "imageUrl": "/src/assets/images/type-coffee/irlandes.svg", 
       "name": "Irlandês",
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       "tags": ["especial", "alcoólico"],

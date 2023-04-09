@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
+import { CoffeeCard } from '../../components/coffeeCard/CoffeeCard'
+import { fetchCoffees } from '../../services/coffeServiçes'
 import {
   BannerContainer,
   CoffeeList,
@@ -12,9 +15,29 @@ import {
 } from './styles'
 
 import imgIntro from '../../assets/images/img-intro.svg'
-import { CoffeeCard } from '../../components/coffeeCard/CoffeeCard'
+
+type CooffeeType = {
+  id: string
+  imageUrl: string
+  name: string
+  description: string
+  tags: Array<string>
+  price: number
+}
 
 export function Home() {
+  const [coffees, setCoffees] = useState<CooffeeType[]>([])
+
+  function loadCoffeeList() {
+    fetchCoffees().then((data) => {
+      setCoffees(data)
+    })
+  }
+
+  useEffect(() => {
+    loadCoffeeList()
+  }, [])
+
   return (
     <>
       <IntroContainer>
@@ -65,12 +88,16 @@ export function Home() {
           <h2>Nossos cafés</h2>
         </header>
         <CoffeeList>
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
+          {coffees.map((coffee) => (
+            <CoffeeCard
+              key={coffee.id}
+              imageUrl={coffee.imageUrl}
+              name={coffee.name}
+              description={coffee.description}
+              tags={coffee.tags}
+              price={coffee.price}
+            />
+          ))}
         </CoffeeList>
       </CoffeeListContainer>
     </>
