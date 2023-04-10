@@ -85,4 +85,27 @@ export const ActionContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  & > button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 0;
+
+    background: ${(props) => props.theme.purpleDark};
+    color: ${(props) => props.theme.baseCard};
+    cursor: pointer;
+
+    :hover {
+      background: ${(props) => props.theme.purple};
+    }
+
+    :focus {
+      box-shadow: 0 0 0 1px ${(props) => props.theme.baseCard};
+    }
+  }
 `

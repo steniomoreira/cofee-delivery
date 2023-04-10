@@ -97,9 +97,11 @@ export const CoffeeListContainer = styled.div`
     padding: 0 1rem;
     margin: 0 auto;
 
-    font-size: 2rem;
-    font-weight: 800;
-    font-family: 'Baloo 2', sans-serif;
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'Baloo 2', sans-serif;
+    }
   }
 `
 

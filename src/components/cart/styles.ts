@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-type CartContainerProps = {
-  secondary: boolean
-}
-
-export const CartContainer = styled.div<CartContainerProps>`
+export const CartContainer = styled.div`
   position: relative;
 
   span {
@@ -38,20 +34,15 @@ export const CartContainer = styled.div<CartContainerProps>`
     align-items: center;
     border-radius: 6px;
 
-    background: ${(props) =>
-      props.secondary ? props.theme.purpleDark : props.theme.yellowLight};
-    color: ${(props) =>
-      props.secondary ? props.theme.baseCard : props.theme.yellowDark};
+    background: ${(props) => props.theme.yellowLight};
+    color: ${(props) => props.theme.yellowDark};
 
     :hover {
-      background: ${(props) =>
-        props.secondary ? props.theme.purple : props.theme.yellowLight};
+      background: ${(props) => props.theme.yellowLight};
     }
 
     :focus {
-      box-shadow: 0 0 0 1px
-        ${(props) =>
-          props.secondary ? props.theme.baseCard : props.theme.yellowDark};
+      box-shadow: 0 0 0 1px ${(props) => props.theme.yellowDark};
     }
   }
 `

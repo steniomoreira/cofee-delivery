@@ -5,13 +5,12 @@ import { CartContainer } from './styles'
 
 interface CartProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   to: string
-  secondary?: boolean
 }
 
-export function Cart({ to, secondary = false, ...props }: CartProps) {
+export function Cart({ to, ...props }: CartProps) {
   return (
-    <CartContainer secondary={secondary}>
-      {!secondary && <span>3</span>}
+    <CartContainer>
+      <span>3</span>
 
       <Link to={to} {...props}>
         <ShoppingCart size={22} weight="fill" />
