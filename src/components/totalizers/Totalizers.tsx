@@ -1,19 +1,23 @@
 import { TotalizersContainer, Item } from './styles'
+import { priceFormatter } from '../../utils/formatter'
+import { useTotalizers } from '../../hooks/useTotalizers'
 
 export function Totalizers() {
+  const totalizer = useTotalizers()
+
   return (
     <TotalizersContainer>
       <Item>
         <span>Total de itens</span>
-        <span>R$ 29,70</span>
+        <span>{priceFormatter.format(totalizer.totalCoffees)}</span>
       </Item>
       <Item>
         <span>Entrega</span>
-        <span>R$ 3,50</span>
+        <span>{priceFormatter.format(totalizer.delivery)}</span>
       </Item>
       <Item>
         <span>Total</span>
-        <span>R$ 33,20</span>
+        <span>{priceFormatter.format(totalizer.total)}</span>
       </Item>
     </TotalizersContainer>
   )

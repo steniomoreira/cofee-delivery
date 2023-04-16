@@ -18,12 +18,20 @@ export function CoffeeSelected() {
   const { coffeeCart, updateCoffeeCart } = useCoffeeCartContext()
 
   function handleIncrement(coffee: CoffeeCart) {
-    updateCoffeeCart({ ...coffee, counter: coffee.counter + 1 })
+    updateCoffeeCart({
+      ...coffee,
+      counter: coffee.counter + 1,
+      totalPrice: (coffee.counter + 1) * coffee.price,
+    })
   }
 
   function handleDecrement(coffee: CoffeeCart) {
     if (coffee.counter === 1) return
-    updateCoffeeCart({ ...coffee, counter: coffee.counter - 1 })
+    updateCoffeeCart({
+      ...coffee,
+      counter: coffee.counter - 1,
+      totalPrice: (coffee.counter - 1) * coffee.price,
+    })
   }
 
   function calculatedTotalPrice(coffee: CoffeeCart) {

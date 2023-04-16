@@ -36,8 +36,6 @@ export function CartProvider({ children }: CartProviderProps) {
     }
   }, [])
 
-  console.log(coffeeCart)
-
   const updateCoffeeCart = useCallback((coffee: CoffeeCart) => {
     setCoffeeCart((stateCart) =>
       stateCart.map((cart) => (cart.order === coffee.order ? coffee : cart)),
