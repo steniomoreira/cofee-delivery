@@ -100,12 +100,18 @@ export const ActionContainer = styled.div`
     color: ${(props) => props.theme.baseCard};
     cursor: pointer;
 
-    :hover {
+    :not(:disabled):hover {
       background: ${(props) => props.theme.purple};
     }
 
     :focus {
       box-shadow: 0 0 0 1px ${(props) => props.theme.baseCard};
+    }
+
+    :disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: ${(props) => props.theme.baseLabel};
     }
   }
 `

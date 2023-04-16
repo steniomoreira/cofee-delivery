@@ -87,7 +87,10 @@ export function CoffeeCard({ coffee }: CooffeeProps) {
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
           />
-          <button onClick={() => handleAddCoffeeCart()}>
+          <button
+            onClick={() => handleAddCoffeeCart()}
+            disabled={counter === 0}
+          >
             <ShoppingCart size={22} weight="fill" />
           </button>
         </ActionContainer>
