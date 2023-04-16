@@ -10,13 +10,7 @@ import {
   TagsContainer,
 } from './styles'
 import { ShoppingCart } from 'phosphor-react'
-
-type CoffeeCartType = {
-  id: string
-  name: string
-  price: number
-  counter: number | 0
-}
+import { useCoffeeCartContext } from '../../hooks/useCoffeeCart'
 
 type CoffeeType = {
   id: string
@@ -29,10 +23,10 @@ type CoffeeType = {
 
 interface CooffeeProps {
   coffee: CoffeeType
-  handleAddCoffeeCart: (coffee: CoffeeCartType) => void
 }
 
-export function CoffeeCard({ coffee, handleAddCoffeeCart }: CooffeeProps) {
+export function CoffeeCard({ coffee }: CooffeeProps) {
+  const { handleAddCoffeeCart } = useCoffeeCartContext()
   const [counter, setCounter] = useState(0)
 
   const { id, imageUrl, name, tags, description, price } = coffee
@@ -44,6 +38,27 @@ export function CoffeeCard({ coffee, handleAddCoffeeCart }: CooffeeProps) {
   function handleDecrement() {
     if (counter === 0) return
     setCounter((state) => state - 1)
+  }
+
+  function calculatedTotalPrice() {
+    if (counter > 0) {
+      return counter * price
+    }
+
+    return price
+  }
+
+  function addCoffeeCart() {
+    const totalPrice = calculatedTotalPrice()
+
+    handleAddCoffeeCart({
+      id,
+      name,
+      totalPrice,
+      price,
+      counter,
+    })
+    setCounter(0)
   }
 
   return (
@@ -61,7 +76,8 @@ export function CoffeeCard({ coffee, handleAddCoffeeCart }: CooffeeProps) {
 
       <Buy>
         <h3>
-          <span>R$</span> {priceFormatter.format(price).replace('R$', '')}
+          <span>R$</span>{' '}
+          {priceFormatter.format(calculatedTotalPrice()).replace('R$', '')}
         </h3>
 
         <ActionContainer>
@@ -70,9 +86,7 @@ export function CoffeeCard({ coffee, handleAddCoffeeCart }: CooffeeProps) {
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
           />
-          <button
-            onClick={() => handleAddCoffeeCart({ id, name, price, counter })}
-          >
+          <button onClick={() => addCoffeeCart()}>
             <ShoppingCart size={22} weight="fill" />
           </button>
         </ActionContainer>

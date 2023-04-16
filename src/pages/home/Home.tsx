@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 import { CoffeeCard } from '../../components/coffeeCard/CoffeeCard'
 import { fetchCoffees } from '../../services/coffeServiçes'
@@ -16,13 +16,6 @@ import {
 
 import imgIntro from '../../assets/images/img-intro.svg'
 
-type CoffeeCartType = {
-  id: string
-  name: string
-  price: number
-  counter: number | 0
-}
-
 type CooffeeType = {
   id: string
   imageUrl: string
@@ -34,13 +27,6 @@ type CooffeeType = {
 
 export function Home() {
   const [coffees, setCoffees] = useState<CooffeeType[]>([])
-  const [cart, setCart] = useState<CoffeeCartType[]>([])
-
-  const handleAddCoffeeCart = useCallback((coffee: CoffeeCartType) => {
-    if (coffee.counter > 0) {
-      setCart((state) => [...state, coffee])
-    }
-  }, [])
 
   function loadCoffeeList() {
     fetchCoffees().then((data) => {
@@ -49,22 +35,8 @@ export function Home() {
   }
 
   useEffect(() => {
-    const storedStateAsJSON = localStorage.getItem(
-      '@ignite-coffee-delivery:cart-1.0.0',
-    )
-
-    console.log(storedStateAsJSON)
-
-    if (storedStateAsJSON) {
-      setCart(JSON.parse(storedStateAsJSON))
-    }
     loadCoffeeList()
   }, [])
-
-  useEffect(() => {
-    const stateJSON = JSON.stringify(cart)
-    localStorage.setItem('@ignite-coffee-delivery:cart-1.0.0', stateJSON)
-  }, [cart])
 
   return (
     <>
@@ -117,11 +89,7 @@ export function Home() {
         </header>
         <CoffeeList>
           {coffees.map((coffee) => (
-            <CoffeeCard
-              key={coffee.id}
-              coffee={coffee}
-              handleAddCoffeeCart={handleAddCoffeeCart}
-            />
+            <CoffeeCard key={coffee.id} coffee={coffee} />
           ))}
         </CoffeeList>
       </CoffeeListContainer>

@@ -69,12 +69,12 @@ export const Buy = styled.div`
   gap: 0.5rem;
 
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
 
     > span {
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
     }
