@@ -19,6 +19,7 @@ interface CoffeeCartContext {
   coffeeCart: CoffeeCart[]
   handleAddCoffeeCart: (coffee: CoffeeCart) => void
   updateCoffeeCart: (coffee: CoffeeCart) => void
+  removeCoffee: (orderRemove: number) => void
 }
 
 export const CartContext = createContext({} as CoffeeCartContext)
@@ -42,6 +43,17 @@ export function CartProvider({ children }: CartProviderProps) {
     )
   }, [])
 
+  const removeCoffee = useCallback(
+    (orderRemove: number) => {
+      const updateListCoffees = coffeeCart.filter(
+        (coffee) => coffee.order !== orderRemove,
+      )
+
+      setCoffeeCart(updateListCoffees)
+    },
+    [coffeeCart],
+  )
+
   useEffect(() => {
     const storedStateAsJSON = localStorage.getItem(
       '@stn-coffee-delivery:cart-1.0.0',
@@ -61,7 +73,12 @@ export function CartProvider({ children }: CartProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{ coffeeCart, handleAddCoffeeCart, updateCoffeeCart }}
+      value={{
+        coffeeCart,
+        handleAddCoffeeCart,
+        updateCoffeeCart,
+        removeCoffee,
+      }}
     >
       {children}
     </CartContext.Provider>

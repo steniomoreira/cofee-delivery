@@ -15,7 +15,7 @@ type CoffeeCart = {
 }
 
 export function CoffeeSelected() {
-  const { coffeeCart, updateCoffeeCart } = useCoffeeCartContext()
+  const { coffeeCart, updateCoffeeCart, removeCoffee } = useCoffeeCartContext()
 
   function handleIncrement(coffee: CoffeeCart) {
     updateCoffeeCart({
@@ -32,6 +32,10 @@ export function CoffeeSelected() {
       counter: coffee.counter - 1,
       totalPrice: (coffee.counter - 1) * coffee.price,
     })
+  }
+
+  function handleRemoveCoffee(order: number) {
+    removeCoffee(order)
   }
 
   function calculatedTotalPrice(coffee: CoffeeCart) {
@@ -58,7 +62,10 @@ export function CoffeeSelected() {
                   handleDecrement={() => handleDecrement(coffee)}
                   isDisabled={coffee.counter === 1}
                 />
-                <ButtonSmall text="Remover" />
+                <ButtonSmall
+                  text="Remover"
+                  onClick={() => handleRemoveCoffee(coffee.order)}
+                />
               </Actions>
             </Details>
           </Info>
