@@ -4,7 +4,9 @@ export const CoffeeSelectedContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid ${(props) => props.theme.baseButton};
 
   > span {
     font-family: 'Roboto', sans-serif;
@@ -48,10 +50,4 @@ export const Actions = styled.div`
   button {
     height: 32px;
   }
-`
-
-export const Divider = styled.hr`
-  margin: 1.5rem 0;
-  border: 0;
-  border-bottom: 1px solid ${(props) => props.theme.baseButton};
 `

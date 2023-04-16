@@ -33,5 +33,10 @@ export const CounterContainer = styled.div`
     :focus {
       box-shadow: none;
     }
+
+    :disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 `

@@ -1,50 +1,63 @@
-import { useState } from 'react'
-import expresso from '../../../../assets/images/type-coffee/expresso.svg'
 import { ButtonSmall } from '../../../../components/buttonSmall/ButtonSmall'
 import { Counter } from '../../../../components/counter/Counter'
-import {
-  CoffeeSelectedContainer,
-  Info,
-  Details,
-  Actions,
-  Divider,
-} from './styles'
+import { useCoffeeCartContext } from '../../../../hooks/useCoffeeCart'
+import { priceFormatter } from '../../../../utils/formatter'
+
+import { CoffeeSelectedContainer, Info, Details, Actions } from './styles'
+
+type CoffeeCart = {
+  order: number
+  imageUrl: string
+  name: string
+  price: number
+  totalPrice: number
+  counter: number | 0
+}
 
 export function CoffeeSelected() {
-  const [counter, setCounter] = useState(0)
+  const { coffeeCart, updateCoffeeCart } = useCoffeeCartContext()
 
-  function handleIncrement() {
-    setCounter((state) => state + 1)
+  function handleIncrement(coffee: CoffeeCart) {
+    updateCoffeeCart({ ...coffee, counter: coffee.counter + 1 })
   }
 
-  function handleDecrement() {
-    if (counter === 0) return
-    setCounter((state) => state - 1)
+  function handleDecrement(coffee: CoffeeCart) {
+    if (coffee.counter === 1) return
+    updateCoffeeCart({ ...coffee, counter: coffee.counter - 1 })
+  }
+
+  function calculatedTotalPrice(coffee: CoffeeCart) {
+    if (coffee.counter > 0) {
+      return coffee.counter * coffee.price
+    }
+
+    return coffee.price
   }
 
   return (
     <>
-      <CoffeeSelectedContainer>
-        <Info>
-          <img src={expresso} alt="Café expresso" />
+      {coffeeCart.map((coffee) => (
+        <CoffeeSelectedContainer key={coffee.order}>
+          <Info>
+            <img src={coffee.imageUrl} alt={coffee.name} />
 
-          <Details>
-            <h2>Expresso Tradicional</h2>
-            <Actions>
-              <Counter
-                counter={counter}
-                handleIncrement={handleIncrement}
-                handleDecrement={handleDecrement}
-              />
-              <ButtonSmall text="Remover" />
-            </Actions>
-          </Details>
-        </Info>
+            <Details>
+              <h2>{coffee.name}</h2>
+              <Actions>
+                <Counter
+                  counter={coffee.counter}
+                  handleIncrement={() => handleIncrement(coffee)}
+                  handleDecrement={() => handleDecrement(coffee)}
+                  isDisabled={coffee.counter === 1}
+                />
+                <ButtonSmall text="Remover" />
+              </Actions>
+            </Details>
+          </Info>
 
-        <span>R$ 9,90</span>
-      </CoffeeSelectedContainer>
-
-      <Divider />
+          <span>{priceFormatter.format(calculatedTotalPrice(coffee))}</span>
+        </CoffeeSelectedContainer>
+      ))}
     </>
   )
 }

@@ -84,7 +84,6 @@ export function Checkout() {
         <h2>Café selecionados</h2>
         <ConfirmRequest>
           <CoffeeSelected />
-          <CoffeeSelected />
 
           <Totalizers />
 

@@ -29,7 +29,7 @@ export function CoffeeCard({ coffee }: CooffeeProps) {
   const { handleAddCoffeeCart } = useCoffeeCartContext()
   const [counter, setCounter] = useState(0)
 
-  const { id, imageUrl, name, tags, description, price } = coffee
+  const { imageUrl, name, tags, description, price } = coffee
 
   function handleIncrement() {
     setCounter((state) => state + 1)
@@ -52,7 +52,8 @@ export function CoffeeCard({ coffee }: CooffeeProps) {
     const totalPrice = calculatedTotalPrice()
 
     handleAddCoffeeCart({
-      id,
+      order: new Date().getTime(),
+      imageUrl,
       name,
       totalPrice,
       price,
