@@ -17,7 +17,7 @@ type CoffeeCart = {
 
 interface CoffeeCartContext {
   coffeeCart: CoffeeCart[]
-  handleAddCoffeeCart: (coffee: CoffeeCart) => void
+  addCoffeeCart: (coffee: CoffeeCart) => void
   updateCoffeeCart: (coffee: CoffeeCart) => void
   removeCoffee: (orderRemove: number) => void
 }
@@ -31,7 +31,7 @@ interface CartProviderProps {
 export function CartProvider({ children }: CartProviderProps) {
   const [coffeeCart, setCoffeeCart] = useState<CoffeeCart[]>([])
 
-  const handleAddCoffeeCart = useCallback((coffee: CoffeeCart) => {
+  const addCoffeeCart = useCallback((coffee: CoffeeCart) => {
     if (coffee.counter > 0) {
       setCoffeeCart((state) => [...state, coffee])
     }
@@ -75,7 +75,7 @@ export function CartProvider({ children }: CartProviderProps) {
     <CartContext.Provider
       value={{
         coffeeCart,
-        handleAddCoffeeCart,
+        addCoffeeCart,
         updateCoffeeCart,
         removeCoffee,
       }}

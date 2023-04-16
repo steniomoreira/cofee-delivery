@@ -26,7 +26,7 @@ interface CooffeeProps {
 }
 
 export function CoffeeCard({ coffee }: CooffeeProps) {
-  const { handleAddCoffeeCart } = useCoffeeCartContext()
+  const { addCoffeeCart } = useCoffeeCartContext()
   const [counter, setCounter] = useState(0)
 
   const { imageUrl, name, tags, description, price } = coffee
@@ -48,10 +48,10 @@ export function CoffeeCard({ coffee }: CooffeeProps) {
     return price
   }
 
-  function addCoffeeCart() {
+  function handleAddCoffeeCart() {
     const totalPrice = calculatedTotalPrice()
 
-    handleAddCoffeeCart({
+    addCoffeeCart({
       order: new Date().getTime(),
       imageUrl,
       name,
@@ -87,7 +87,7 @@ export function CoffeeCard({ coffee }: CooffeeProps) {
             handleIncrement={handleIncrement}
             handleDecrement={handleDecrement}
           />
-          <button onClick={() => addCoffeeCart()}>
+          <button onClick={() => handleAddCoffeeCart()}>
             <ShoppingCart size={22} weight="fill" />
           </button>
         </ActionContainer>
