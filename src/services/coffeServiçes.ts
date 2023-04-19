@@ -14,3 +14,16 @@ export const fetchCoffees = () => {
     return response.data
   })
 }
+
+export const fetchAddress = (cep: string) => {
+  const url = `https://viacep.com.br/ws/${cep}/json`
+  return api.get(url).then((response) => response.data)
+}
+
+export const fetchCity = () => {
+  const url = `https://api.bigdatacloud.net/data/reverse-geocode-client`
+  return api.get(url).then((response) => {
+    const { city, principalSubdivisionCode } = response.data
+    return { city, principalSubdivisionCode }
+  })
+}

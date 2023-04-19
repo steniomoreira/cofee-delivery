@@ -1,14 +1,28 @@
 import { InputHTMLAttributes } from 'react'
-import { InputContainer, InputFileld } from './styles'
+import { useFormContext } from 'react-hook-form'
+import { InputContainer, InputError, InputFileld } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string
   maxWidth?: number
 }
 
-export function Input({ ...props }: InputProps) {
+export function Input({ name, ...props }: InputProps) {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
+
   return (
     <InputContainer hasLabelOptional={!props.required} {...props}>
-      <InputFileld {...props} />
+      <InputFileld
+        {...register(name, {
+          minLength: props.maxLength,
+          required: props.required,
+        })}
+        {...props}
+      />
+      {errors[name] && <InputError>Requerido</InputError>}
     </InputContainer>
   )
 }

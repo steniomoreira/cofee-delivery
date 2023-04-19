@@ -58,3 +58,8 @@ export const InputFileld = styled.input`
     font-size: 0.75rem;
   }
 `
+
+export const InputError = styled.p`
+  font-size: 0.625rem;
+  color: ${(props) => props.theme.yellowDark};
+`
