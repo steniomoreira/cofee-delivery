@@ -1,3 +1,4 @@
+import { InputMasked } from '../../components/inputMasked/InputMasked'
 import { Input } from '../../components/input/Input'
 import { useForm, FormProvider } from 'react-hook-form'
 import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
@@ -5,7 +6,7 @@ import { Button } from '../../components/button/Button'
 import { CoffeeSelected } from './components/coffeeSelected/CoffeeSelected'
 import { Totalizers } from '../../components/totalizers/Totalizers'
 // import { useNavigate } from 'react-router-dom'
-// import { fetchAddress } from '../../services/coffeServiçes'
+import { fetchAddress } from '../../services/coffeServiçes'
 import {
   Bank,
   CreditCard,
@@ -33,18 +34,18 @@ type CheckouFormInput = {
 }
 
 export function Checkout() {
-  // const [address, setAddress] = useState({})
-  // const navigate = useNavigate()
-
   const methods = useForm<CheckouFormInput>()
 
-  // function handleOnChange(cep: string) {
-  //   if (cep.length === 8) {
-  //     fetchAddress(cep).then((response) => {
-  //       setAddress(response)
-  //     })
-  //   }
-  // }
+  function handleOnChange(postalCode: string) {
+    if (postalCode?.length === 9) {
+      fetchAddress(postalCode).then((response) => {
+        methods.setValue('street', response.logradouro)
+        methods.setValue('district', response.bairro)
+        methods.setValue('city', response.localidade)
+        methods.setValue('uf', response.uf)
+      })
+    }
+  }
 
   function onSave(data: CheckouFormInput) {
     console.log(data)
@@ -68,13 +69,14 @@ export function Checkout() {
               </DescriptionContainer>
 
               <GroupInputsFields>
-                <Input
-                  name="postalCode"
-                  placeholder="CEP"
-                  maxLength={9}
-                  maxWidth={200}
-                  required
-                />
+                <InputMasked
+                  mask="99999-999"
+                  {...methods.register('postalCode')}
+                  onChange={(event) => handleOnChange(event.target.value)}
+                >
+                  <Input name="" placeholder="CEP" maxWidth={200} required />
+                </InputMasked>
+
                 <Input name="street" placeholder="Rua" required />
                 <Input
                   name="number"

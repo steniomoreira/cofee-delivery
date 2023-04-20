@@ -17,7 +17,6 @@ export function Input({ name, ...props }: InputProps) {
     <InputContainer hasLabelOptional={!props.required} {...props}>
       <InputFileld
         {...register(name, {
-          minLength: props.maxLength,
           required: props.required,
         })}
         {...props}

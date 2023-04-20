@@ -15,9 +15,17 @@ export const fetchCoffees = () => {
   })
 }
 
+type AddressTypes = {
+  cep: string
+  logradouro: string
+  bairro: string
+  localidade: string
+  uf: string
+}
+
 export const fetchAddress = (cep: string) => {
   const url = `https://viacep.com.br/ws/${cep}/json`
-  return api.get(url).then((response) => response.data)
+  return api.get<AddressTypes>(url).then((response) => response.data)
 }
 
 export const fetchCity = () => {
