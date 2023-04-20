@@ -17,11 +17,14 @@ export function Input({ name, ...props }: InputProps) {
     <InputContainer hasLabelOptional={!props.required} {...props}>
       <InputFileld
         {...register(name, {
-          required: props.required,
+          required: props.required && {
+            value: props.required,
+            message: 'Requerido',
+          },
         })}
         {...props}
       />
-      {errors[name] && <InputError>Requerido</InputError>}
+      {errors[name] && <InputError>{`${errors[name]?.message}`}</InputError>}
     </InputContainer>
   )
 }

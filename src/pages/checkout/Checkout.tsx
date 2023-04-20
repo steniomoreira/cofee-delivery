@@ -70,18 +70,22 @@ export function Checkout() {
 
               <GroupInputsFields>
                 <InputMasked
+                  name="postalCode"
                   mask="99999-999"
-                  {...methods.register('postalCode')}
                   onChange={(event) => handleOnChange(event.target.value)}
-                >
-                  <Input name="" placeholder="CEP" maxWidth={200} required />
-                </InputMasked>
+                  placeholder="CEP"
+                  maxWidth={200}
+                  minLength={9}
+                  required
+                />
 
                 <Input name="street" placeholder="Rua" required />
                 <Input
                   name="number"
+                  type="number"
                   placeholder="Número"
                   maxWidth={200}
+                  min={0}
                   required
                 />
                 <Input
@@ -101,7 +105,13 @@ export function Checkout() {
                   maxWidth={276}
                   required
                 />
-                <Input name="uf" placeholder="UF" maxWidth={60} required />
+                <Input
+                  name="uf"
+                  placeholder="UF"
+                  maxWidth={60}
+                  maxLength={2}
+                  required
+                />
               </GroupInputsFields>
             </CompleteOrder>
 
