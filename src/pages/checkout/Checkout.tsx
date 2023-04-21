@@ -1,19 +1,13 @@
 import { InputMasked } from '../../components/inputMasked/InputMasked'
 import { Input } from '../../components/input/Input'
 import { useForm, FormProvider } from 'react-hook-form'
-import { ButtonSelect } from '../../components/buttonSelect/ButtonSelect'
 import { Button } from '../../components/button/Button'
 import { CoffeeSelected } from './components/coffeeSelected/CoffeeSelected'
 import { Totalizers } from '../../components/totalizers/Totalizers'
+
 // import { useNavigate } from 'react-router-dom'
 import { fetchAddress } from '../../services/coffeServiçes'
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from 'phosphor-react'
+import { CurrencyDollar, MapPinLine } from 'phosphor-react'
 
 import {
   CheckoutContainer,
@@ -22,6 +16,7 @@ import {
   DescriptionContainer,
   GroupInputsFields,
 } from './styles'
+import { RadiosGroup } from './components/radiosGroup/RadiosGroup'
 
 type CheckouFormInput = {
   postalCode: string
@@ -43,6 +38,8 @@ export function Checkout() {
         methods.setValue('district', response.bairro)
         methods.setValue('city', response.localidade)
         methods.setValue('uf', response.uf)
+
+        methods.clearErrors()
       })
     }
   }
@@ -127,19 +124,7 @@ export function Checkout() {
                 </span>
               </DescriptionContainer>
 
-              <GroupInputsFields>
-                <ButtonSelect text="Cartão de crédito">
-                  <CreditCard size={16} />
-                </ButtonSelect>
-
-                <ButtonSelect text="Cartão de débito">
-                  <Bank size={16} />
-                </ButtonSelect>
-
-                <ButtonSelect text="Dinheiro" select>
-                  <Money size={16} />
-                </ButtonSelect>
-              </GroupInputsFields>
+              <RadiosGroup />
             </CompleteOrder>
           </form>
         </section>

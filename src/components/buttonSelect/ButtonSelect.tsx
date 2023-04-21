@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react'
 import { Button } from './styles'
 
 interface ButtonSelctProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,16 +7,15 @@ interface ButtonSelctProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode
 }
 
-export function ButtonSelect({
-  select = false,
-  text,
-  children,
-  ...props
-}: ButtonSelctProps) {
-  return (
-    <Button type="button" select={select} {...props}>
-      {children}
-      <p>{text}</p>
-    </Button>
-  )
-}
+export const ButtonSelect = forwardRef<HTMLButtonElement, ButtonSelctProps>(
+  (props, ref) => {
+    return (
+      <Button ref={ref} type="button" select={props.select} {...props}>
+        {props.children}
+        <p>{props.text}</p>
+      </Button>
+    )
+  },
+)
+
+ButtonSelect.displayName = 'ButtonSelect'

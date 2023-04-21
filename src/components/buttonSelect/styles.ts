@@ -22,6 +22,10 @@ export const Button = styled.button<ButtonProps>`
   border: 1px solid
     ${(props) => (props.select ? props.theme.purple : props.theme.baseButton)};
 
+  &[data-state='checked'] {
+    border: 1px solid ${(props) => props.theme.purple};
+  }
+
   > svg {
     color: ${(props) => props.theme.purple};
   }
