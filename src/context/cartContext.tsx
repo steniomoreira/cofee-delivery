@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react'
 
-type CoffeeCart = {
+export type CoffeeCart = {
   order: number
   imageUrl: string
   name: string
@@ -15,11 +15,25 @@ type CoffeeCart = {
   counter: number | 0
 }
 
+type OrderType = {
+  postalCode: string
+  street: string
+  number: number
+  complement?: string
+  district: string
+  city: string
+  uf: string
+  typeOfPayment: string
+  orders: CoffeeCart[]
+}
+
 interface CoffeeCartContext {
   coffeeCart: CoffeeCart[]
+  finishedOrder: OrderType
   addCoffeeCart: (coffee: CoffeeCart) => void
   updateCoffeeCart: (coffee: CoffeeCart) => void
   removeCoffee: (orderRemove: number) => void
+  closeCart: (order: OrderType) => void
 }
 
 export const CartContext = createContext({} as CoffeeCartContext)
@@ -30,6 +44,7 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [coffeeCart, setCoffeeCart] = useState<CoffeeCart[]>([])
+  const [finishedOrder, setFinishedOrder] = useState<OrderType>({} as OrderType)
 
   const addCoffeeCart = useCallback((coffee: CoffeeCart) => {
     if (coffee.counter > 0) {
@@ -54,6 +69,12 @@ export function CartProvider({ children }: CartProviderProps) {
     [coffeeCart],
   )
 
+  const closeCart = useCallback((order: OrderType) => {
+    setFinishedOrder(order)
+    setCoffeeCart([])
+    localStorage.removeItem('@stn-coffee-delivery:cart-1.0.0')
+  }, [])
+
   useEffect(() => {
     const storedStateAsJSON = localStorage.getItem(
       '@stn-coffee-delivery:cart-1.0.0',
@@ -68,7 +89,10 @@ export function CartProvider({ children }: CartProviderProps) {
     if (coffeeCart.length > 0) {
       const stateJSON = JSON.stringify(coffeeCart)
       localStorage.setItem('@stn-coffee-delivery:cart-1.0.0', stateJSON)
+      return
     }
+
+    localStorage.removeItem('@stn-coffee-delivery:cart-1.0.0')
   }, [coffeeCart])
 
   return (
@@ -78,6 +102,8 @@ export function CartProvider({ children }: CartProviderProps) {
         addCoffeeCart,
         updateCoffeeCart,
         removeCoffee,
+        closeCart,
+        finishedOrder,
       }}
     >
       {children}

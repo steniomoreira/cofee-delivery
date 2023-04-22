@@ -15,7 +15,7 @@ export function Cart({ to, ...props }: CartProps) {
 
   return (
     <CartContainer>
-      <span>{total}</span>
+      {total > 0 && <span>{total}</span>}
 
       <Link to={to} {...props}>
         <ShoppingCart size={22} weight="fill" />

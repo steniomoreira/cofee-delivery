@@ -4,8 +4,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { Button } from '../../components/button/Button'
 import { CoffeeSelected } from './components/coffeeSelected/CoffeeSelected'
 import { Totalizers } from '../../components/totalizers/Totalizers'
-
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { fetchAddress } from '../../services/coffeServiçes'
 import { CurrencyDollar, MapPinLine } from 'phosphor-react'
 
@@ -17,6 +16,8 @@ import {
   GroupInputsFields,
 } from './styles'
 import { RadiosGroup } from './components/radiosGroup/RadiosGroup'
+import { useCoffeeCartContext } from '../../hooks/useCoffeeCart'
+import { CoffeeCart } from '../../context/cartContext'
 
 type CheckouFormInput = {
   postalCode: string
@@ -26,9 +27,14 @@ type CheckouFormInput = {
   district: string
   city: string
   uf: string
+  typeOfPayment: string
+  orders: CoffeeCart[]
 }
 
 export function Checkout() {
+  const { coffeeCart, closeCart } = useCoffeeCartContext()
+  const navigate = useNavigate()
+
   const methods = useForm<CheckouFormInput>()
 
   function handleOnChange(postalCode: string) {
@@ -45,9 +51,9 @@ export function Checkout() {
   }
 
   function onSave(data: CheckouFormInput) {
-    console.log(data)
-
-    // navigate('/success')
+    const order = { ...data, orders: coffeeCart }
+    closeCart(order)
+    navigate('/success')
   }
 
   return (
@@ -140,6 +146,7 @@ export function Checkout() {
               type="submit"
               text="Confirmar Pedido"
               onClick={methods.handleSubmit(onSave)}
+              disabled={coffeeCart.length < 1}
             />
           </ConfirmRequest>
         </section>

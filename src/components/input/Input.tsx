@@ -10,11 +10,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export function Input({ name, ...props }: InputProps) {
   const {
     register,
+    watch,
     formState: { errors },
   } = useFormContext()
 
   return (
-    <InputContainer hasLabelOptional={!props.required} {...props}>
+    <InputContainer
+      hasLabelOptional={!props.required && !watch(name)}
+      {...props}
+    >
       <InputFileld
         {...register(name, {
           required: props.required && {

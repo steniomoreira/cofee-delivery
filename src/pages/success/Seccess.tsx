@@ -2,8 +2,14 @@ import { SuccessContainer, OrderInfo, Info, DescriptionInfo } from './styles'
 
 import imgSuccess from '../../assets/images/img-success.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useCoffeeCartContext } from '../../hooks/useCoffeeCart'
 
 export function Success() {
+  const { finishedOrder } = useCoffeeCartContext()
+
+  const { street, number, complement, district, city, uf, typeOfPayment } =
+    finishedOrder
+
   return (
     <SuccessContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -16,8 +22,16 @@ export function Success() {
               <MapPin size={16} weight="fill" />
             </span>
             <p>
-              Entregar em <strong>Rua Ana Rocha, 85</strong> <br />
-              Guagiru - Caucaia, CE
+              {street ? (
+                <>
+                  Entregar em{' '}
+                  <strong>{`${street}, ${number} - ${complement}`}</strong>{' '}
+                  <br />
+                  {` ${district} - ${city}, ${uf}`}
+                </>
+              ) : (
+                'Endereço de entrega'
+              )}
             </p>
           </DescriptionInfo>
 
@@ -37,7 +51,7 @@ export function Success() {
             </span>
             <p>
               Pagamento na entrega <br />
-              <strong>Cartão de Crédito</strong>
+              <strong>{typeOfPayment}</strong>
             </p>
           </DescriptionInfo>
         </Info>

@@ -17,7 +17,14 @@ export const ButtonContainer = styled.button`
   background: ${(props) => props.theme.yellow};
   color: ${(props) => props.theme.white};
 
-  :hover {
+  opacity: 1;
+
+  :not(:disabled):hover {
     background: ${(props) => props.theme.yellowDark};
+  }
+
+  :disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `
