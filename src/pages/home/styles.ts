@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import * as Checkbox from '@radix-ui/react-checkbox'
 
 export const IntroContainer = styled.div`
   width: 100%;
@@ -97,11 +98,55 @@ export const CoffeeListContainer = styled.div`
     padding: 0 1rem;
     margin: 0 auto;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     h2 {
       font-size: 2rem;
       font-weight: 800;
       font-family: 'Baloo 2', sans-serif;
     }
+  }
+`
+
+export const TagsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex: 1;
+
+  &:focus {
+    box-shadow: none;
+  }
+`
+
+export const Tag = styled(Checkbox.Root)`
+  background: transparent;
+  color: ${(props) => props.theme.yellowDark};
+  border: 1px solid ${(props) => props.theme.yellow};
+  border-radius: 100px;
+
+  padding: 0.375rem 0.75rem;
+  height: 25px;
+
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  &[data-state='checked'] {
+    background: ${(props) => props.theme.yellow};
+    color: ${(props) => props.theme.white};
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    box-shadow: none;
   }
 `
 

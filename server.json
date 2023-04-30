@@ -1,4 +1,11 @@
 {
+  "tagsCoffee" : [
+    {"id": 1, "value": "tradicional"},
+    {"id": 2, "value": "especial"},
+    {"id": 3, "value": "com leite"},
+    {"id": 4, "value": "alcoólico"},
+    {"id": 5, "value": "gelado"}   
+  ],
   "coffees": [
     {
       "id": 1,

@@ -5,12 +5,25 @@ type CooffeeType = {
   imageUrl: string
   name: string
   description: string
-  tags: Array<string>
+  tags: string[]
   price: number
 }
 
-export const fetchCoffees = () => {
-  return api.get<CooffeeType[]>('/coffees').then((response) => {
+export const fetchCoffees = (tag?: string) => {
+  const url = tag ? `/coffees?tags_like=${tag}` : '/coffees'
+
+  return api.get<CooffeeType[]>(url).then((response) => {
+    return response.data
+  })
+}
+
+type TagsCoffee = {
+  id: number
+  value: string
+}
+
+export const fetchTagsCoffees = () => {
+  return api.get<TagsCoffee[]>('/tagsCoffee').then((response) => {
     return response.data
   })
 }
