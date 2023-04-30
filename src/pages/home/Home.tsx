@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 import { CoffeeCard } from '../../components/coffeeCard/CoffeeCard'
 import { fetchCoffees, fetchTagsCoffees } from '../../services/coffeServiçes'
+import { CoffeeCardLoader } from '../../components/loaders/coffeeCard/CoffeeCardLoader'
 import {
   BannerContainer,
   CoffeeList,
@@ -36,28 +37,39 @@ export function Home() {
   const [coffees, setCoffees] = useState<CooffeeType[]>([])
   const [tagsCoffee, setTagsCoffee] = useState<TagsCoffee[]>([])
   const [checkedTag, setCheckedTag] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   function loadCoffeeList() {
+    setIsLoading(true)
     fetchCoffees().then((data) => {
       setCoffees(data)
     })
   }
 
   function loadTagsCoffee() {
-    fetchTagsCoffees().then((data) => {
-      setTagsCoffee(data)
-    })
+    fetchTagsCoffees()
+      .then((data) => {
+        setTagsCoffee(data)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   const handleFilterByTag = useCallback(
     (tag: string) => {
+      setIsLoading(true)
       setCheckedTag((state) => (state !== tag ? tag : ''))
 
       const filterTag = checkedTag !== tag ? tag : ''
 
-      fetchCoffees(filterTag).then((data) => {
-        setCoffees(data)
-      })
+      fetchCoffees(filterTag)
+        .then((data) => {
+          setCoffees(data)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
     },
     [checkedTag],
   )
@@ -128,11 +140,16 @@ export function Home() {
             ))}
           </TagsContainer>
         </header>
-        <CoffeeList>
-          {coffees.map((coffee) => (
-            <CoffeeCard key={coffee.id} coffee={coffee} />
-          ))}
-        </CoffeeList>
+
+        {isLoading ? (
+          <CoffeeCardLoader />
+        ) : (
+          <CoffeeList>
+            {coffees.map((coffee) => (
+              <CoffeeCard key={coffee.id} coffee={coffee} />
+            ))}
+          </CoffeeList>
+        )}
       </CoffeeListContainer>
     </>
   )

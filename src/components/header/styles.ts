@@ -5,7 +5,7 @@ export const HeaderContainer = styled.header`
   top: 0;
   width: 100%;
   background: ${(props) => props.theme.background};
-  z-index: 1;
+  z-index: 10;
 `
 
 export const HeaderWrapper = styled.div`

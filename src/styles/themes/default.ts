@@ -18,4 +18,5 @@ export const defaultTheme = {
   baseButton: '#E6E5E5',
   baseInput: '#EDEDED',
   baseCard: '#F3F2F2',
+  baseCardLight: ' #f6f6f6',
 }
