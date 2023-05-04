@@ -35,7 +35,11 @@ export function Checkout() {
   const { coffeeCart, closeCart } = useCoffeeCartContext()
   const navigate = useNavigate()
 
-  const methods = useForm<CheckouFormInput>()
+  const methods = useForm<CheckouFormInput>({
+    defaultValues: {
+      typeOfPayment: 'Cartão de crédito',
+    },
+  })
 
   function handleOnChange(postalCode: string) {
     if (postalCode?.length === 9) {
@@ -51,6 +55,8 @@ export function Checkout() {
   }
 
   function onSave(data: CheckouFormInput) {
+    console.log(data)
+
     const order = { ...data, orders: coffeeCart }
     closeCart(order)
     navigate('/success')
