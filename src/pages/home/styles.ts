@@ -19,6 +19,16 @@ export const BannerContainer = styled.div`
   align-items: center;
 
   height: 544px;
+
+  img {
+    width: 100%;
+    max-width: 476px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
 `
 
 export const DescriptionContainer = styled.div`
@@ -107,6 +117,10 @@ export const CoffeeListContainer = styled.div`
       font-weight: 800;
       font-family: 'Baloo 2', sans-serif;
     }
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 `
 
@@ -117,6 +131,11 @@ export const TagsContainer = styled.div`
   justify-content: flex-end;
   gap: 0.5rem;
   flex: 1;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
   &:focus {
     box-shadow: none;
@@ -130,6 +149,7 @@ export const Tag = styled(Checkbox.Root)`
   border-radius: 100px;
 
   padding: 0.375rem 0.75rem;
+  min-width: 80px;
   height: 25px;
 
   font-size: 0.625rem;
@@ -160,4 +180,8 @@ export const CoffeeList = styled.div`
   gap: 2.5rem 2rem;
 
   flex-wrap: wrap;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
 `

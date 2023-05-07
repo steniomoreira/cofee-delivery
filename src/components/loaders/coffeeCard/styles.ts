@@ -25,6 +25,10 @@ export const CoffeeCardLoaderContent = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
 `
 export const LoaderImage = styled(Skeleton)`
   margin-top: -20px;

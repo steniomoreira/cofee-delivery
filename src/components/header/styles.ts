@@ -41,6 +41,10 @@ export const LocationContainer = styled.span`
 
   font-size: 0.875rem;
   line-height: 18.2px;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 `
 
 export const ActionContainer = styled.div`
