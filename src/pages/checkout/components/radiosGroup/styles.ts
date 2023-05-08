@@ -9,4 +9,10 @@ export const RadioContainer = styled(RadioGroup.Root)`
   :focus {
     box-shadow: none;
   }
+
+  @media (max-width: 1024px) {
+    > button {
+      max-width: 100%;
+    }
+  }
 `

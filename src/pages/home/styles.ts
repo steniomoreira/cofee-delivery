@@ -23,6 +23,10 @@ export const BannerContainer = styled.div`
   img {
     width: 100%;
     max-width: 476px;
+
+    @media (max-width: 525px) {
+      max-width: 260px;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -49,6 +53,16 @@ export const TitleContainer = styled.div`
     font-size: 1.25rem;
     font-weight: 400;
     line-height: 130%;
+  }
+
+  @media (max-width: 525px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
   }
 `
 

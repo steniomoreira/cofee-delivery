@@ -11,6 +11,10 @@ export const CheckoutContainer = styled.div`
   justify-content: space-between;
   gap: 2rem;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   section {
     > h2 {
       font-family: 'Baloo 2', sans-serif;
@@ -21,6 +25,10 @@ export const CheckoutContainer = styled.div`
     :last-child {
       width: 100%;
       max-width: 448px;
+
+      @media (max-width: 1024px) {
+        max-width: 100%;
+      }
     }
   }
 
@@ -28,6 +36,12 @@ export const CheckoutContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
+    @media (max-width: 768px) {
+      > div {
+        padding: 1rem;
+      }
+    }
   }
 `
 
@@ -41,6 +55,12 @@ export const GroupInputsFields = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 0.75rem;
+
+  @media (max-width: 1024px) {
+    > div {
+      max-width: 100%;
+    }
+  }
 `
 
 const COLORS = {
@@ -79,4 +99,9 @@ export const DescriptionContainer = styled.div<ColorProps>`
 export const ConfirmRequest = styled(CoffeeCardContainer)`
   max-width: 448px;
   border-radius: 6px 44px;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    padding: 1rem;
+  }
 `

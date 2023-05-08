@@ -8,10 +8,19 @@ export const CoffeeSelectedContainer = styled.div`
   margin-bottom: 1.5rem;
   border-bottom: 1px solid ${(props) => props.theme.baseButton};
 
+  @media (max-width: 525px) {
+    flex-direction: column-reverse;
+  }
+
   > span {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 1rem;
+
+    @media (max-width: 525px) {
+      align-self: flex-end;
+      margin-bottom: 1rem;
+    }
   }
 `
 
