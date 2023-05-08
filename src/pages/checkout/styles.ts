@@ -13,6 +13,7 @@ export const CheckoutContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    padding-top: 1rem;
   }
 
   section {

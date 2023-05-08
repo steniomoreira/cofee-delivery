@@ -6,6 +6,10 @@ export const SuccessContainer = styled.div`
   padding: 5rem 1rem;
   margin: 0 auto;
 
+  @media (max-width: 1024px) {
+    padding: 1rem;
+  }
+
   > h1 {
     font-family: 'Baloo 2', sans-serif;
     font-size: 2rem;
@@ -27,6 +31,16 @@ export const OrderInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  img {
+    width: 100%;
+    max-width: 492px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
 `
 
 export const Info = styled.div`
@@ -45,6 +59,10 @@ export const Info = styled.div`
 
   border: 1px solid transparent;
   border-radius: 6px 36px;
+
+  @media (max-width: 525px) {
+    padding: 1rem;
+  }
 
   :before {
     content: '';
@@ -85,6 +103,7 @@ export const DescriptionInfo = styled.div<ColorProps>`
 
   span {
     width: 32px;
+    min-width: 32px;
     height: 32px;
     background: ${(props) => props.theme[COLORS[props.iconColor]]};
     color: ${(props) => props.theme.white};
